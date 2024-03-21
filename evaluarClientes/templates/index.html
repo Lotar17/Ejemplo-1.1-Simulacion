@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Peluqueria</title>
+</head>
+<body>
+    <h1>Bienvenidos a la Peluqueria</h1>
+    <br>
+    <p>Promedio de demora de nuestros clientes: {{promedioDemora}} minutos</p>
+    <br>
+    <p>Promedio de clientes por dia: {{promedioClientesPorDia}}</p>
+    <br>
+    <h2>Crear un ingreso</h2>
+    <form action="/" method="post">
+        {%csrf_token%}
+        {{formIngreso}}
+        <br>
+        {%if numeroUltimoIngreso != 0%}
+        <p>Último número de ingreso: {{numeroUltimoIngreso}}</p>
+        {%endif%}
+        <button type="submit">Aceptar</button>
+    </form>
+    <br>
+    <br>
+    <h2>Crear una salida</h2>
+    <form action="/salida/" method="post">
+        {%csrf_token%}
+        {{formSalida.as_p}}
+        {%if isSalidaRegistered == True%}
+        <p>Se registró la salida correctamente</p>
+        {%endif%}
+        <br>
+        <button type="submit">Aceptar</button>
+    </form>
+</body>
+</html>
